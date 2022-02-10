@@ -27,5 +27,39 @@ Then the whole track image is segmented, creating images with shape 96x96x1. Exa
 GANs are a powerful tool for generative tasks especially in image generation. A GAN consists of two sub-models, the generator and the discriminator.
 The generator receives a vector of random noise as input (in its dense layer) and executes transpose convolutions in order to construct an image. Images produced by the generator are fed to the discriminator along with the ones from the initial dataset. Then the discriminator predicts whether its input is true (from the dataset) or fake (generated). Based on its performance both the submodels are evaluated resulting in a zero-sum game.
 
+### Generator Architecture
+![gen_arch](https://user-images.githubusercontent.com/99400979/153491517-b35e61e6-7472-4eb3-8b7b-515e5d6861f5.PNG)
+
+### Discriminator Architecture
+![disc_arch](https://user-images.githubusercontent.com/99400979/153491552-2a68a800-d642-440b-ac69-37eb246f0d56.PNG)
+
+### Combined Model:
+![gan_combined](https://user-images.githubusercontent.com/99400979/153491593-cafd328f-ff91-4478-8d90-dcc3d184f2a6.PNG)
+
+### Results:
+
+![image](https://user-images.githubusercontent.com/99400979/153493006-91232ead-d59e-4d7f-bf9a-7552d8911adb.png)
+![image](https://user-images.githubusercontent.com/99400979/153494975-4a004779-4c81-4cc3-baf0-02594e8f9430.png)
+![image](https://user-images.githubusercontent.com/99400979/153495481-87fa9ec8-22c8-497f-b8d7-a3b3cce6a8e8.png)
+
+It is observed that PMD and Undertale iterations suffer from convergence failure (generator loss is increasingly higher from discriminator loss, and discriminator has near perfect accuracy). The Classic iteration though seemingly escapes from that issue, thus outperforming the other two cases. That can be seen based on quality of generated images.
+
+## VAE
+VAEs also serve a fair solution for generative modeling. The first submodel, the encoder is fed input images and translates them into encodings. 
+
+### Generator Architecture
+![gen_arch](https://user-images.githubusercontent.com/99400979/153491517-b35e61e6-7472-4eb3-8b7b-515e5d6861f5.PNG)
+
+### Discriminator Architecture
+![disc_arch](https://user-images.githubusercontent.com/99400979/153491552-2a68a800-d642-440b-ac69-37eb246f0d56.PNG)
+
+### Combined Model:
+![gan_combined](https://user-images.githubusercontent.com/99400979/153491593-cafd328f-ff91-4478-8d90-dcc3d184f2a6.PNG)
+
+### Results:
+
+![image](https://user-images.githubusercontent.com/99400979/153493006-91232ead-d59e-4d7f-bf9a-7552d8911adb.png)
+![image](https://user-images.githubusercontent.com/99400979/153494975-4a004779-4c81-4cc3-baf0-02594e8f9430.png)
+![image](https://user-images.githubusercontent.com/99400979/153495481-87fa9ec8-22c8-497f-b8d7-a3b3cce6a8e8.png)
 
 
