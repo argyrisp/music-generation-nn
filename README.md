@@ -39,27 +39,43 @@ The generator receives a vector of random noise as input (in its dense layer) an
 ### Results:
 
 ![image](https://user-images.githubusercontent.com/99400979/153493006-91232ead-d59e-4d7f-bf9a-7552d8911adb.png)
+
+Loss & accuracy plots:
+
 ![image](https://user-images.githubusercontent.com/99400979/153494975-4a004779-4c81-4cc3-baf0-02594e8f9430.png)
 ![image](https://user-images.githubusercontent.com/99400979/153495481-87fa9ec8-22c8-497f-b8d7-a3b3cce6a8e8.png)
 
 It is observed that PMD and Undertale iterations suffer from convergence failure (generator loss is increasingly higher from discriminator loss, and discriminator has near perfect accuracy). The Classic iteration though seemingly escapes from that issue, thus outperforming the other two cases. That can be seen based on quality of generated images.
 
 ## VAE
-VAEs also serve a fair solution for generative modeling. The first submodel, the encoder is fed input images and translates them into encodings. 
+VAEs also serve a fair solution for generative modeling. The first submodel, the encoder is fed input images and translates them into encodings. Those encodings then get passed through the second submodel, the decoder, which translates them to images. After training the decoder model is used for image generation based on input encodings that appear in the space. During training, the model is compiled in both reconstruction loss and Kullback-Leibler loss.
 
-### Generator Architecture
-![gen_arch](https://user-images.githubusercontent.com/99400979/153491517-b35e61e6-7472-4eb3-8b7b-515e5d6861f5.PNG)
+### Encoder Architecture:
+![encoder_arch](https://user-images.githubusercontent.com/99400979/153566850-2a801684-5a2a-42fd-b0a5-95687dcd0cca.PNG)
 
-### Discriminator Architecture
-![disc_arch](https://user-images.githubusercontent.com/99400979/153491552-2a68a800-d642-440b-ac69-37eb246f0d56.PNG)
+### Decoder Architecture:
+![decoder_arch](https://user-images.githubusercontent.com/99400979/153566809-e12b6f99-d4d8-4a99-b830-aaba751d7857.PNG)
+
 
 ### Combined Model:
-![gan_combined](https://user-images.githubusercontent.com/99400979/153491593-cafd328f-ff91-4478-8d90-dcc3d184f2a6.PNG)
+![standard_autoencoder](https://user-images.githubusercontent.com/99400979/153566888-9ab466df-312a-4ea0-a849-fa4618267263.PNG)
 
 ### Results:
 
-![image](https://user-images.githubusercontent.com/99400979/153493006-91232ead-d59e-4d7f-bf9a-7552d8911adb.png)
-![image](https://user-images.githubusercontent.com/99400979/153494975-4a004779-4c81-4cc3-baf0-02594e8f9430.png)
-![image](https://user-images.githubusercontent.com/99400979/153495481-87fa9ec8-22c8-497f-b8d7-a3b3cce6a8e8.png)
+![image](https://user-images.githubusercontent.com/99400979/153567349-a799204c-cbd4-4f86-84c3-7af3cba591c9.png)
+
+Latent space clustering:
+![image](https://user-images.githubusercontent.com/99400979/153567446-a4296119-8789-4724-926f-223786b990f5.png)
+
+Loss plots:
+
+![image](https://user-images.githubusercontent.com/99400979/153567497-827bb6d5-2dcb-4c88-80da-a13479152d5c.png)
+
+It is observed that the Undertale and PMD iterations have a tedency to produce images that resemble musical parts, but in all cases the result is noisier than the GAN approach. Based on loss plots the model behaves as expected.
+
+# Conclusion:
+In summary the music produced by those models (GAN and VAE) is not consumer-grade quality, although the models are trained efficiently, with little resource requirements, and behave as expected based on neural network theory. Generative tasks are one of the most difficult problems in machine learning due to the fact that results can be subjective.
+
+
 
 
